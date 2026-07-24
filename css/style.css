@@ -831,3 +831,7 @@ body.no-scroll { overflow: hidden; }
         height:30px;
     }
 }
+.whatsapp-float{
+    right:30px;
+    bottom:30px;
+}
