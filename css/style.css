@@ -835,3 +835,21 @@ body.no-scroll { overflow: hidden; }
     right:30px;
     bottom:30px;
 }
+.wa-wrapper{
+position:fixed;
+right:25px;
+bottom:25px;
+display:flex;
+align-items:center;
+gap:12px;
+z-index:9999;
+}
+
+.wa-text{
+background:#fff;
+padding:10px 16px;
+border-radius:25px;
+font-weight:600;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+font-size:14px;
+}
