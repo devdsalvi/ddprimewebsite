@@ -519,3 +519,28 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
     width:auto;
     display:block;
 }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-title{
+    font-family:'Poppins',sans-serif;
+    font-size:26px;
+    font-weight:800;
+    color:#0B2A5B;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    line-height:1;
+}
+
+.logo-red{
+    color:#D91E2E;
+}
+
+@media (max-width:768px){
+    .logo-title{
+        font-size:18px;
+    }
+}
