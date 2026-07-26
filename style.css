@@ -514,3 +514,8 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
   .hero-cta .btn{ width:100%; }
   .lane-card{ padding:22px; }
 }
+.site-logo{
+    height:38px;
+    width:auto;
+    display:block;
+}
