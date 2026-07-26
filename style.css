@@ -139,11 +139,20 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
     var(--bg);
 }
 .hero-inner{ display:grid; grid-template-columns: 1.05fr .95fr; gap:56px; align-items:center; }
-
 .eyebrow{
-  display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:.85rem;
-  color: var(--primary); background: var(--bg-light); border:1px solid var(--border);
-  padding:8px 16px; border-radius: var(--radius-pill); margin-bottom:22px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:1.05rem;
+    color:#0B2A5B;
+    background:#F8FAFF;
+    border:1px solid #D6E0F5;
+    padding:12px 22px;
+    border-radius:999px;
+    margin-bottom:24px;
+    font-family:'Poppins',sans-serif;
+}
 }
 .eyebrow-dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); }
 
