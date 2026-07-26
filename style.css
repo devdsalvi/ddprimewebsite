@@ -478,7 +478,6 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
     bottom:18px;
 }
 }
-
 /* Mobile nav + stacking */
 @media (max-width: 760px){
   :root{ --nav-h: 68px; }
@@ -500,8 +499,13 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
   .footer-bottom-inner{ flex-direction:column; text-align:center; }
 
   .float-whatsapp{ width:50px; height:50px; bottom:18px; left:18px; }
-  .back-to-top{ width:44px; height:44px; bottom:18px; right:18px; }
-
+  .float-whatsapp{
+    width:56px;
+    height:56px;
+    bottom:18px;
+    right:18px;
+    left:auto;
+}
   .contact-form{ padding:28px 22px; }
 }
 
