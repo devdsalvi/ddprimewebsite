@@ -174,7 +174,7 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
 }
 .lane-toggle-track.comply .lane-toggle-thumb{ transform: translateX(24px); background: var(--accent); }
 
-.lane-list{ display:flex; flex-direction:column; gap:14px; margin-bottom:24px; }
+.lane-list{ display:flex; flex-direction:column; gap:14px; margin-bottom:48px; }
 .lane-item{
   display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius: var(--radius-md);
   background: var(--bg-light); border-left:4px solid var(--primary); transition: transform .25s ease, box-shadow .25s ease;
