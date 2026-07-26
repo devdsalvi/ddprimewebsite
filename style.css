@@ -466,9 +466,11 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
   .about-stats{
     margin-top:6px;
   }
+.footer-inner{
+    grid-template-columns:1fr 1fr;
+}
 
-  .footer-inner{
-  .float-whatsapp{
+.float-whatsapp{
     width:56px;
     height:56px;
     right:18px;
