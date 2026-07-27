@@ -366,13 +366,14 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
     border-radius:50%;
     background:rgba(255,255,255,.10);
 
-    display:flex;
+    display:inline-flex;
     align-items:center;
     justify-content:center;
 
     color:#fff;
     text-decoration:none;
 
+    overflow:hidden;
     flex-shrink:0;
 }
 .social-icon i{
