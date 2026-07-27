@@ -355,7 +355,10 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
 /* ---------- Footer ---------- */
 .footer{ background: var(--primary-dark); color:#fff; padding-top:70px; }
 .footer-inner{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap:36px; padding-bottom:50px; }
-.footer-logo{ margin-bottom:16px; }
+.footer-logo{
+    display:inline-block;
+    margin-bottom:18px;
+}
 .footer-logo .logo-mark{ background:#fff; color: var(--primary); }
 .footer-logo .logo-text{ color:#fff; }
 .footer-brand p{ color: rgba(255,255,255,.72); font-weight:600; font-size:.9rem; margin-bottom:20px; max-width:280px; }
