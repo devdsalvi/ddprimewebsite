@@ -361,16 +361,24 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
 .footer-brand p{ color: rgba(255,255,255,.72); font-weight:600; font-size:.9rem; margin-bottom:20px; max-width:280px; }
 .footer-social{ display:flex; gap:10px; }
 .social-icon{
-    width:40px;
-    height:40px;
+    width:48px;
+    height:48px;
     border-radius:50%;
-    background:rgba(255,255,255,.1);
+    background:rgba(255,255,255,.10);
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     color:#fff;
-    font-size:18px;
-    transition:.3s;
+    text-decoration:none;
+
+    flex-shrink:0;
+}
+.social-icon i{
+    font-size:20px;
+    line-height:1;
+    display:block;
 }
 .social-icon:hover{ background: var(--accent); transform: translateY(-3px); }
 .footer-col h4{ font-family: var(--font-display); font-weight:800; font-size:.95rem; margin-bottom:20px; color:#fff; }
