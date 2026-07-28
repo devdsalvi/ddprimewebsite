@@ -153,7 +153,6 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
     margin-bottom:24px;
     font-family:'Poppins',sans-serif;
 }
-}
 .eyebrow-dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); }
 
 .hero-title{ font-size: clamp(2.3rem, 4.4vw, 3.6rem); font-weight:900; margin-bottom:22px; }
