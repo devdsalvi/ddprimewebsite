@@ -157,31 +157,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Contact form ---------- */
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
+ /* ---------- Contact form ---------- */
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const service = document.getElementById('service').value;
+    const formData = new FormData(contactForm);
 
-      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      const phoneValid = /^[0-9+\-\s()]{7,}$/.test(phone);
-
-      if (!name || !emailValid || !phoneValid || !service) {
-        formStatus.textContent = 'Please fill in every field with a valid email and phone number.';
-        formStatus.className = 'form-status error';
-        return;
-      }
-
-      formStatus.textContent = `Thanks, ${name.split(' ')[0]}. We'll reach out within one business day.`;
-      formStatus.className = 'form-status success';
-      contactForm.reset();
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: formData
     });
+
+    if (response.ok) {
+      formStatus.textContent = "✅ Thank you! Your enquiry has been sent successfully.";
+      formStatus.className = "form-status success";
+      contactForm.reset();
+    } else {
+      formStatus.textContent = "❌ Failed to send enquiry. Please try again.";
+      formStatus.className = "form-status error";
+    }
+  });
+}
   }
 
 });
