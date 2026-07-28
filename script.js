@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Contact form ---------- */
- /* ---------- Contact form ---------- */
+   
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
@@ -165,21 +165,28 @@ if (contactForm) {
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const formData = new FormData(contactForm);
+    try {
+      const formData = new FormData(contactForm);
 
-    const response = await fetch(contactForm.action, {
-      method: "POST",
-      body: formData
-    });
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: formData
+      });
 
-    if (response.ok) {
-      formStatus.textContent = "✅ Thank you! Your enquiry has been sent successfully.";
-      formStatus.className = "form-status success";
-      contactForm.reset();
-    } else {
+      if (response.ok) {
+        formStatus.textContent = "✅ Thank you! Your enquiry has been sent successfully.";
+        formStatus.className = "form-status success";
+        contactForm.reset();
+      } else {
+        throw new Error("Submission failed");
+      }
+
+    } catch (error) {
       formStatus.textContent = "❌ Failed to send enquiry. Please try again.";
       formStatus.className = "form-status error";
+      console.error(error);
     }
   });
 }
+
 });
