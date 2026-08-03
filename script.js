@@ -99,28 +99,189 @@ document.addEventListener('DOMContentLoaded', () => {
 
   statNums.forEach(el => statObserver.observe(el));
 
-  /* ---------- Hero lane toggle (Build / Comply) ---------- */
-  const laneLabels = document.querySelectorAll('.lane-toggle-label');
-  const laneTrack = document.querySelector('.lane-toggle-track');
-  const laneItems = document.querySelectorAll('.lane-item');
+/* ============================================================
+   BUILD / COMPLY — Component Behavior
+   Vanilla JS. No dependencies. Scoped to #bc-section only.
+   ============================================================ */
 
-  const setLane = (lane) => {
-    laneLabels.forEach(l => l.classList.toggle('active', l.dataset.lane === lane));
-    laneTrack.classList.toggle('comply', lane === 'comply');
-    laneItems.forEach(item => {
-      const matches = item.classList.contains(`lane-${lane}`);
-      item.style.order = matches ? '0' : '1';
-      item.style.opacity = matches ? '1' : '.55';
-    });
+(function () {
+  "use strict";
+
+  var DATA = {
+    build: [
+      {
+        icon: "🌐",
+        title: "Website Development",
+        desc: "Modern responsive business websites.",
+      },
+      {
+        icon: "🛒",
+        title: "Shopify Development",
+        desc: "Conversion-focused Shopify stores.",
+      },
+      {
+        icon: "📈",
+        title: "Digital Marketing",
+        desc: "SEO, Google Ads, Meta Ads.",
+      },
+      {
+        icon: "🎯",
+        title: "Branding",
+        desc: "Professional identity & growth.",
+      },
+    ],
+    comply: [
+      {
+        icon: "📄",
+        title: "GST Registration",
+        desc: "Register your business for GST.",
+      },
+      {
+        icon: "📑",
+        title: "GST Return Filing",
+        desc: "Stay compliant, every filing cycle.",
+      },
+      {
+        icon: "🏢",
+        title: "MSME Registration",
+        desc: "Unlock benefits for small businesses.",
+      },
+      {
+        icon: "🛡",
+        title: "Trademark Registration",
+        desc: "Protect your brand identity.",
+      },
+      {
+        icon: "💼",
+        title: "Company Registration",
+        desc: "Set up your company, done right.",
+      },
+      {
+        icon: "📦",
+        title: "IEC Registration",
+        desc: "Start importing and exporting legally.",
+      },
+    ],
   };
 
-  laneLabels.forEach(label => {
-    label.addEventListener('click', () => setLane(label.dataset.lane));
+  var section = document.getElementById("bc-section");
+  if (!section) return;
+
+  var panel = section.querySelector(".bc-panel");
+  var cardsEl = section.querySelector("#bc-panel-cards");
+  var tabBuild = section.querySelector("#bc-tab-build");
+  var tabComply = section.querySelector("#bc-tab-comply");
+  var tabs = [tabBuild, tabComply];
+
+  function cardMarkup(item, index) {
+    var delay = index * 60;
+    return (
+      '<div class="bc-card" tabindex="0" role="button" style="--bc-delay:' +
+      delay +
+      'ms">' +
+      '<span class="bc-card-icon" aria-hidden="true">' +
+      item.icon +
+      "</span>" +
+      '<span class="bc-card-body">' +
+      '<span class="bc-card-title">' +
+      item.title +
+      "</span>" +
+      '<p class="bc-card-desc">' +
+      item.desc +
+      "</p>" +
+      "</span>" +
+      '<span class="bc-card-arrow">' +
+      '<svg viewBox="0 0 24 24" fill="none">' +
+      '<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+      "</svg>" +
+      "</span>" +
+      "</div>"
+    );
+  }
+
+  function renderCards(mode) {
+    var items = DATA[mode];
+    cardsEl.innerHTML = items.map(cardMarkup).join("");
+  }
+
+  function setActiveTab(mode) {
+    var isBuild = mode === "build";
+
+    panel.setAttribute("data-active", mode);
+
+    tabBuild.classList.toggle("is-active", isBuild);
+    tabBuild.setAttribute("aria-selected", String(isBuild));
+    tabBuild.tabIndex = isBuild ? 0 : -1;
+
+    tabComply.classList.toggle("is-active", !isBuild);
+    tabComply.setAttribute("aria-selected", String(!isBuild));
+    tabComply.tabIndex = !isBuild ? 0 : -1;
+
+    cardsEl.setAttribute(
+      "aria-labelledby",
+      isBuild ? "bc-tab-build" : "bc-tab-comply"
+    );
+
+    renderCards(mode);
+  }
+
+  function activate(tabButton) {
+    var mode = tabButton === tabBuild ? "build" : "comply";
+    if (panel.getAttribute("data-active") === mode) return;
+    setActiveTab(mode);
+  }
+
+  tabBuild.addEventListener("click", function () {
+    activate(tabBuild);
   });
-  laneTrack.addEventListener('click', () => {
-    const current = laneTrack.classList.contains('comply') ? 'build' : 'comply';
-    setLane(current);
+  tabComply.addEventListener("click", function () {
+    activate(tabComply);
   });
+
+  // Keyboard support: left/right/home/end move between tabs (WAI-ARIA tabs pattern)
+  section.querySelector(".bc-tabs").addEventListener("keydown", function (e) {
+    var currentIndex = tabs.indexOf(document.activeElement);
+    if (currentIndex === -1) return;
+
+    var nextIndex = null;
+
+    switch (e.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        nextIndex = (currentIndex + 1) % tabs.length;
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = tabs.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    e.preventDefault();
+    var nextTab = tabs[nextIndex];
+    nextTab.focus();
+    activate(nextTab);
+  });
+
+  // Allow Enter/Space to trigger a card (in case cards later become real links)
+  cardsEl.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var card = e.target.closest(".bc-card");
+    if (!card) return;
+    e.preventDefault();
+    card.click();
+  });
+
+  // Initial render
+  renderCards("build");
+})();
 
   /* ---------- FAQ accordion ---------- */
   const faqQuestions = document.querySelectorAll('.faq-question');
