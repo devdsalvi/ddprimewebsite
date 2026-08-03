@@ -587,3 +587,34 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
         font-size:18px;
     }
 }
+.portfolio-thumb{
+    width:100%;
+    height:240px;
+    overflow:hidden;
+    border-radius:15px;
+}
+
+.portfolio-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.portfolio-card:hover img{
+    transform:scale(1.05);
+}
+
+.portfolio-features{
+    margin:18px 0;
+    padding-left:18px;
+}
+
+.portfolio-features li{
+    margin:6px 0;
+    font-size:14px;
+}
+
+.portfolio-buttons{
+    margin-top:20px;
+}
