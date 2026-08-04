@@ -200,97 +200,154 @@ Affordable GST Registration, Digital Marketing and Website Packages for Startups
   </div>
 </section>
 
-<!-- ===================== SERVICES ===================== -->
-<section class="section services" id="services">
-  <div class="container">
-    <p class="section-eyebrow">What we do</p>
-    <h2 class="section-title">Fourteen services, two disciplines, one invoice</h2>
-    <p class="section-sub">Blue is what we build. Red is what we file. Pick one lane or run both in parallel.</p>
+<!-- ============================================================
+     OUR SERVICES SECTION — DD PRIME
+     Insert this markup between your Hero section and Pricing
+     section. Link services.css in <head> and services.js
+     before </body>.
+     Mobile behaviour: 2 columns (2x2) so 4 cards are visible
+     together on screen at once instead of a single stacked column.
+     ============================================================ -->
 
-    <div class="services-legend">
-      <span class="legend-chip legend-build"><i></i> Build &amp; Grow</span>
-      <span class="legend-chip legend-comply"><i></i> Register &amp; Comply</span>
-    </div>
+<section class="ddp-services" id="services" aria-labelledby="ddp-services-heading">
+  <div class="ddp-services__container">
 
-    <div class="services-grid">
+    <!-- Section Header -->
+    <header class="ddp-services__header">
+      <span class="ddp-services__label">OUR SERVICES</span>
+      <h2 class="ddp-services__heading" id="ddp-services-heading">
+        Everything Your Business Needs Under One Roof
+      </h2>
+      <p class="ddp-services__subtitle">
+        From website development to legal compliance, DD PRIME provides complete
+        digital and business solutions for startups, MSMEs and growing businesses.
+      </p>
+    </header>
 
-      <article class="service-card build reveal">
-        <span class="service-num">01</span>
-        <h3>Website Development</h3>
-        <p>Custom-coded business sites built for speed, SEO and mobile conversion.</p>
-      </article>
-      <article class="service-card build reveal">
-        <span class="service-num">02</span>
-        <h3>Shopify Development</h3>
-        <p>Store setup, theme customisation and checkout optimisation for sellers.</p>
-      </article>
-      <article class="service-card build reveal">
-        <span class="service-num">03</span>
-        <h3>Digital Marketing</h3>
-        <p>Full-funnel campaigns that turn visibility into paying customers.</p>
-      </article>
-      <article class="service-card build reveal">
-        <span class="service-num">04</span>
-        <h3>SEO</h3>
-        <p>On-page, technical and content SEO to rank where buyers search.</p>
-      </article>
-      <article class="service-card build reveal">
-        <span class="service-num">05</span>
-        <h3>Google Ads</h3>
-        <p>Search and shopping campaigns managed for cost-per-lead, not clicks.</p>
-      </article>
-      <article class="service-card build reveal">
-        <span class="service-num">06</span>
-        <h3>Meta Ads</h3>
-        <p>Facebook &amp; Instagram funnels built around your product catalogue.</p>
-      </article>
+    <!-- Services Grid -->
+    <div class="ddp-services__grid">
 
-      <article class="service-card comply reveal">
-        <span class="service-num">07</span>
-        <h3>GST Registration</h3>
-        <p>End-to-end GSTIN registration with document handling for you.</p>
-      </article>
-      <article class="service-card comply reveal">
-        <span class="service-num">08</span>
-        <h3>GST Return Filing</h3>
-        <p>Monthly, quarterly and annual returns filed accurately, on schedule.</p>
-      </article>
-      <article class="service-card comply reveal">
-        <span class="service-num">09</span>
-        <h3>Income Tax Return</h3>
-        <p>ITR filing for individuals, freelancers and businesses of every size.</p>
-      </article>
-      <article class="service-card comply reveal">
-        <span class="service-num">10</span>
-        <h3>Trademark Registration</h3>
-        <p>Search, filing and tracking to secure your brand name and logo.</p>
-      </article>
-      <article class="service-card comply reveal">
-        <span class="service-num">11</span>
-        <h3>MSME Registration</h3>
-        <p>Udyam registration to unlock government schemes and loan benefits.</p>
-      </article>
-      <article class="service-card comply reveal">
-        <span class="service-num">12</span>
-        <h3>IEC Registration</h3>
-        <p>Import Export Code for businesses ready to trade internationally.</p>
-      </article>
-      <article class="service-card comply reveal">
-        <span class="service-num">13</span>
-        <h3>Company Registration</h3>
-        <p>Private Limited, LLP and Proprietorship setup, done correctly.</p>
-      </article>
-      <article class="service-card comply reveal">
-        <span class="service-num">14</span>
-        <h3>Business Consultation</h3>
-        <p>One call to map which registrations and digital moves you actually need.</p>
-      </article>
+      <!-- 1. Website Development -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="9" width="36" height="30" rx="4" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M6 17H42" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="12" cy="13" r="1.4" fill="currentColor"/>
+            <circle cx="17" cy="13" r="1.4" fill="currentColor"/>
+            <path d="M14 26L18 30L14 34" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M25 34L34 34" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">Website Development</h3>
+        <p class="ddp-card__desc">Custom, high-performance websites built to convert visitors into customers.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
+
+      <!-- 2. Shopify Development -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 15L15 8L35 10L37 40L11 40L13 15Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M19 15C19 11 21 8 24 8C27 8 28 11 28 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M20 22C21 21 23 20 25 21C27 22 26.5 24 24.5 24.5C22.5 25 22 27 24 28C26 29 28 28 28.5 27" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">Shopify Development</h3>
+        <p class="ddp-card__desc">Conversion-ready Shopify stores with seamless checkout and store management.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
+
+      <!-- 3. Digital Marketing -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 30L6 40L14 40L14 26" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M14 26L38 8V22L14 26Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M14 26L38 30V22" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M17 33C17 36 15.5 38.5 13 40" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">Digital Marketing</h3>
+        <p class="ddp-card__desc">Data-driven campaigns across social and search that grow your customer base.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
+
+      <!-- 4. SEO Optimization -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="21" r="13" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M30.5 30.5L41 41" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M15 22L19 26L27 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">SEO Optimization</h3>
+        <p class="ddp-card__desc">Rank higher on search engines with technical, on-page and content SEO.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
+
+      <!-- 5. GST Registration -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 6H32L38 12V42H12V6Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M32 6V12H38" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M18 22H32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M18 28H32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M18 34H26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">GST Registration</h3>
+        <p class="ddp-card__desc">Fast, hassle-free GST registration and ongoing filing support for your business.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
+
+      <!-- 6. Income Tax Return (ITR) -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M24 15V33" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M28.5 19C28.5 16.79 26.49 15 24 15C21.51 15 19.5 16.79 19.5 19C19.5 21.21 21.51 22 24 22C26.49 22 28.5 22.79 28.5 25C28.5 27.21 26.49 29 24 29C21.51 29 19.5 27.21 19.5 25" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">Income Tax Return (ITR)</h3>
+        <p class="ddp-card__desc">Accurate, on-time ITR filing so you stay compliant and stress-free every year.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
+
+      <!-- 7. Trademark Registration -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 6L38 13V22C38 32 32.5 38.5 24 42C15.5 38.5 10 32 10 22V13L24 6Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M17.5 23L22 27.5L31 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">Trademark Registration</h3>
+        <p class="ddp-card__desc">Protect your brand name and logo with end-to-end trademark filing support.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
+
+      <!-- 8. Business Consultation -->
+      <a href="#" class="ddp-card">
+        <div class="ddp-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 32V14C8 12 9.5 10.5 11.5 10.5H36.5C38.5 10.5 40 12 40 14V28C40 30 38.5 31.5 36.5 31.5H18L11 38V32H8Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M17 21C17 21 19 17.5 24 17.5C29 17.5 31 21 31 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="17" cy="21" r="1.4" fill="currentColor"/>
+            <circle cx="31" cy="21" r="1.4" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3 class="ddp-card__title">Business Consultation</h3>
+        <p class="ddp-card__desc">Strategic guidance to help you plan, structure and scale your business right.</p>
+        <span class="ddp-card__link">Learn More <span class="ddp-card__arrow">→</span></span>
+      </a>
 
     </div>
   </div>
 </section>
-
-
 <!-- ===================== WORKING PROCESS ===================== -->
 <section class="section process" id="process">
   <div class="container">
