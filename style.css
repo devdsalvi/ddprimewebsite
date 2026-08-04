@@ -1017,3 +1017,296 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
 .portfolio-buttons{
     margin-top:20px;
 }
+/* ============================================================
+   OUR SERVICES SECTION — Scoped Styles (prefix: ddp-)
+   Palette: Navy #0B2A5B | Red #D91E2E | Border #E8E8E8 | White
+   Mobile: 2 columns (2x2) so 4 cards show together on screen
+   ============================================================ */
+
+.ddp-services {
+  --ddp-navy: #0B2A5B;
+  --ddp-navy-soft: #345480;
+  --ddp-red: #D91E2E;
+  --ddp-border: #E8E8E8;
+  --ddp-bg: #FFFFFF;
+  --ddp-text-muted: #5B6472;
+  --ddp-radius: 20px;
+  --ddp-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  width: 100%;
+  background: var(--ddp-bg);
+  padding: 80px 24px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.ddp-services *,
+.ddp-services *::before,
+.ddp-services *::after {
+  box-sizing: border-box;
+}
+
+.ddp-services__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+
+.ddp-services__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+
+.ddp-services__label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--ddp-red);
+  margin-bottom: 16px;
+}
+
+.ddp-services__heading {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--ddp-navy);
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.ddp-services__subtitle {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ddp-text-muted);
+  margin: 0;
+}
+
+/* ---------- Grid ---------- */
+
+.ddp-services__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  .ddp-services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: STILL 2 columns (2x2) so 4 cards are visible together
+   on screen at once, just more compact spacing/typography so
+   they fit comfortably on a phone viewport. */
+@media (max-width: 600px) {
+  .ddp-services {
+    padding: 48px 14px;
+  }
+
+  .ddp-services__header {
+    margin-bottom: 32px;
+  }
+
+  .ddp-services__heading {
+    font-size: 24px;
+  }
+
+  .ddp-services__subtitle {
+    font-size: 14px;
+  }
+
+  .ddp-services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .ddp-card {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+
+  .ddp-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+
+  .ddp-card__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ddp-card__title {
+    font-size: 13.5px;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+
+  .ddp-card__desc {
+    font-size: 11.5px;
+    line-height: 1.4;
+    margin: 0 0 12px;
+    /* clamp to 2 lines so all 4 cards stay equal height and tidy */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ddp-card__link {
+    font-size: 11.5px;
+  }
+
+  /* lighten the hover-lift on touch devices so it doesn't feel odd on tap */
+  .ddp-card:hover,
+  .ddp-card:focus-visible {
+    transform: translateY(-3px);
+  }
+}
+
+/* Extra-small phones: keep 2 columns, shrink a touch more */
+@media (max-width: 360px) {
+  .ddp-services__grid {
+    gap: 10px;
+  }
+
+  .ddp-card {
+    padding: 14px 10px;
+  }
+
+  .ddp-card__title {
+    font-size: 12.5px;
+  }
+
+  .ddp-card__desc {
+    font-size: 11px;
+  }
+}
+
+/* ---------- Card ---------- */
+
+.ddp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  background: var(--ddp-bg);
+  border: 1px solid var(--ddp-border);
+  border-radius: var(--ddp-radius);
+  padding: 32px 28px;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(11, 42, 91, 0.04);
+  transition: transform 0.3s var(--ddp-ease),
+              box-shadow 0.3s var(--ddp-ease),
+              border-color 0.3s var(--ddp-ease);
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.ddp-card.ddp-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ddp-card:hover,
+.ddp-card:focus-visible {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(11, 42, 91, 0.12);
+  border-color: var(--ddp-navy);
+  outline: none;
+}
+
+.ddp-card:hover .ddp-card__icon,
+.ddp-card:focus-visible .ddp-card__icon {
+  background: var(--ddp-navy);
+  border-color: var(--ddp-navy);
+}
+
+.ddp-card:hover .ddp-card__icon svg,
+.ddp-card:focus-visible .ddp-card__icon svg {
+  color: #FFFFFF;
+  transform: scale(1.08);
+}
+
+.ddp-card:hover .ddp-card__link,
+.ddp-card:focus-visible .ddp-card__link {
+  color: var(--ddp-red);
+}
+
+.ddp-card:hover .ddp-card__arrow,
+.ddp-card:focus-visible .ddp-card__arrow {
+  transform: translateX(4px);
+}
+
+.ddp-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 1.5px solid var(--ddp-border);
+  background: #FAFAFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: background 0.3s var(--ddp-ease), border-color 0.3s var(--ddp-ease);
+}
+
+.ddp-card__icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--ddp-navy);
+  transition: color 0.3s var(--ddp-ease), transform 0.3s var(--ddp-ease);
+}
+
+.ddp-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ddp-navy);
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+.ddp-card__desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ddp-text-muted);
+  margin: 0 0 22px;
+  flex-grow: 1;
+}
+
+.ddp-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ddp-navy);
+  transition: color 0.3s var(--ddp-ease);
+}
+
+.ddp-card__arrow {
+  transition: transform 0.3s var(--ddp-ease);
+  display: inline-block;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .ddp-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ddp-card:hover,
+  .ddp-card:focus-visible {
+    transform: none;
+  }
+  .ddp-card__icon svg,
+  .ddp-card__arrow {
+    transition: none;
+  }
+}
