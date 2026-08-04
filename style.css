@@ -1186,15 +1186,8 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
   transition: transform 0.3s var(--ddp-ease),
               box-shadow 0.3s var(--ddp-ease),
               border-color 0.3s var(--ddp-ease);
-  opacity: 0;
-  transform: translateY(24px);
+   
 }
-
-.ddp-card.ddp-in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .ddp-card:hover,
 .ddp-card:focus-visible {
   transform: translateY(-8px);
