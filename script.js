@@ -1,204 +1,101 @@
-/* ============================================================
-   DD PRIME — Main Script
-   ------------------------------------------------------------
-   Handles: nav toggle, sticky navbar shadow, scroll-reveal
-   animations, ripple button effect, FAQ accordion, back-to-top,
-   contact form submit status, and footer year.
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* -----------------------------------------------------------
-     1. Footer year
-     ----------------------------------------------------------- */
+  /* ---------- 1. Footer year ---------- */
   var yearEl = document.getElementById('year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  /* -----------------------------------------------------------
-     2. Sticky navbar shadow on scroll
-     ----------------------------------------------------------- */
-  var navbar = document.getElementById('navbar');
-  function handleNavbarScroll() {
-    if (!navbar) return;
-    if (window.scrollY > 12) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  }
-  handleNavbarScroll();
-  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+  /* ---------- 2. FAQ accordion ---------- */
+  var faqButtons = document.querySelectorAll('.faq-question');
+  faqButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      var answer = document.getElementById(btn.getAttribute('aria-controls'));
+      var item = btn.closest('.faq-item');
 
-  /* -----------------------------------------------------------
-     3. Mobile nav toggle
-     ----------------------------------------------------------- */
-  var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', function () {
-      var isOpen = navLinks.classList.toggle('open');
-      navToggle.classList.toggle('active', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    // Close mobile menu when a link is clicked
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
+      // Close any other open item (single-open accordion)
+      faqButtons.forEach(function (otherBtn) {
+        if (otherBtn !== btn && otherBtn.getAttribute('aria-expanded') === 'true') {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          var otherAnswer = document.getElementById(otherBtn.getAttribute('aria-controls'));
+          if (otherAnswer) otherAnswer.hidden = true;
+          var otherItem = otherBtn.closest('.faq-item');
+          if (otherItem) otherItem.classList.remove('is-open');
+        }
       });
+
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (answer) answer.hidden = expanded;
+      if (item) item.classList.toggle('is-open', !expanded);
     });
-  }
+  });
 
-  /* -----------------------------------------------------------
-     4. Scroll reveal (IntersectionObserver)
-     ----------------------------------------------------------- */
+  /* ---------- 3. Scroll reveal ---------- */
   var revealEls = document.querySelectorAll('.reveal, .svc-reveal');
-
   if ('IntersectionObserver' in window && revealEls.length) {
-    var revealObserver = new IntersectionObserver(function (entries) {
+    var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
-          revealObserver.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
-    });
+    }, { threshold: 0.15 });
 
-    revealEls.forEach(function (el) {
-      revealObserver.observe(el);
-    });
+    revealEls.forEach(function (el) { observer.observe(el); });
   } else {
-    // Fallback: reveal everything immediately
-    revealEls.forEach(function (el) {
-      el.classList.add('in-view');
-    });
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
   }
 
-  /* -----------------------------------------------------------
-     5. Ripple effect for .ripple buttons
-     ----------------------------------------------------------- */
+  /* ---------- 4. Button ripple effect ---------- */
   document.querySelectorAll('.ripple').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       var rect = btn.getBoundingClientRect();
-      var ripple = document.createElement('span');
-      var size = Math.max(rect.width, rect.height);
-      var x = (e.clientX || rect.left + rect.width / 2) - rect.left - size / 2;
-      var y = (e.clientY || rect.top + rect.height / 2) - rect.top - size / 2;
+      var circle = document.createElement('span');
+      var diameter = Math.max(rect.width, rect.height);
 
-      ripple.className = 'ripple-effect';
-      ripple.style.width = ripple.style.height = size + 'px';
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
+      circle.className = 'ripple-effect';
+      circle.style.width = circle.style.height = diameter + 'px';
+      circle.style.left = (e.clientX - rect.left - diameter / 2) + 'px';
+      circle.style.top = (e.clientY - rect.top - diameter / 2) + 'px';
 
-      btn.appendChild(ripple);
-      window.setTimeout(function () {
-        ripple.remove();
-      }, 650);
+      btn.appendChild(circle);
+      circle.addEventListener('animationend', function () { circle.remove(); });
     });
   });
 
-  /* -----------------------------------------------------------
-     6. FAQ accordion
-     ----------------------------------------------------------- */
-  var faqItems = document.querySelectorAll('.faq-item');
+  /* ---------- 5. Contact form (progressive enhancement over the native POST) ---------- */
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
 
-  faqItems.forEach(function (item) {
-    var question = item.querySelector('.faq-question');
-    var answer = item.querySelector('.faq-answer');
-    if (!question || !answer) return;
-
-    question.addEventListener('click', function () {
-      var isOpen = question.getAttribute('aria-expanded') === 'true';
-
-      // Close all other FAQ items (single-open accordion)
-      faqItems.forEach(function (otherItem) {
-        var otherQuestion = otherItem.querySelector('.faq-question');
-        var otherAnswer = otherItem.querySelector('.faq-answer');
-        if (otherQuestion && otherAnswer && otherItem !== item) {
-          otherQuestion.setAttribute('aria-expanded', 'false');
-          otherAnswer.style.maxHeight = null;
-        }
-      });
-
-      // Toggle current item
-      question.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-      answer.style.maxHeight = isOpen ? null : answer.scrollHeight + 'px';
-    });
-  });
-
-  /* -----------------------------------------------------------
-     7. Back to top button
-     ----------------------------------------------------------- */
-  var backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 480) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    }, { passive: true });
-
-    backToTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  /* -----------------------------------------------------------
-     8. Contact form — async submit with status message
-     ----------------------------------------------------------- */
-  var contactForm = document.getElementById('contactForm');
-  var formStatus = document.getElementById('formStatus');
-
-  if (contactForm && formStatus) {
-    contactForm.addEventListener('submit', function (e) {
+  if (form && status) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
+      status.textContent = 'Sending your message…';
+      status.classList.remove('form-status--error', 'form-status--success');
 
-      var submitBtn = contactForm.querySelector('button[type="submit"]');
-      var originalBtnText = submitBtn ? submitBtn.textContent : '';
+      var formData = new FormData(form);
 
-      formStatus.textContent = 'Sending your message...';
-      formStatus.className = 'form-status';
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-      }
-
-      var formData = new FormData(contactForm);
-
-      fetch(contactForm.action, {
+      fetch(form.action, {
         method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' }
+        headers: { 'Accept': 'application/json' },
+        body: formData
       })
         .then(function (response) { return response.json(); })
         .then(function (data) {
           if (data.success) {
-            formStatus.textContent = 'Thank you! Your message has been sent. We\u2019ll get back to you within one business day.';
-            formStatus.className = 'form-status success';
-            contactForm.reset();
+            status.textContent = 'Thanks — your message has been sent. We will reply within one business day.';
+            status.classList.add('form-status--success');
+            form.reset();
           } else {
-            formStatus.textContent = 'Something went wrong. Please try again or WhatsApp us directly.';
-            formStatus.className = 'form-status error';
+            status.textContent = 'Something went wrong. Please try again or WhatsApp us directly.';
+            status.classList.add('form-status--error');
           }
         })
         .catch(function () {
-          formStatus.textContent = 'Something went wrong. Please try again or WhatsApp us directly.';
-          formStatus.className = 'form-status error';
-        })
-        .finally(function () {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalBtnText;
-          }
+          status.textContent = 'Something went wrong. Please try again or WhatsApp us directly.';
+          status.classList.add('form-status--error');
         });
     });
   }
