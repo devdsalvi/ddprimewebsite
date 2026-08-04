@@ -1014,16 +1014,38 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
     gap:16px;
 }
 
+.footer-social{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:20px;
+}
+
 .social-icon{
     width:48px;
     height:48px;
-    display:flex;
-    align-items:center;
+
+    display:inline-flex;
     justify-content:center;
+    align-items:center;
+
     border-radius:50%;
-    background:rgba(255,255,255,.08);
+    background:#252525;
+
     color:#fff;
     font-size:20px;
+
+    transition:.3s;
+}
+
+.social-icon:hover{
+    background:#D91E2E;
+    transform:translateY(-4px);
+}
+
+.social-icon i{
+    font-size:20px;
+    line-height:1;
 }
 
 .social-icon i{
