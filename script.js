@@ -316,7 +316,36 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => circle.remove(), 650);
     });
   });
+// ============================================================
+// OUR SERVICES SECTION — Fade-up-on-scroll (scoped, no globals)
+// ============================================================
+(function () {
+  var cards = document.querySelectorAll('.ddp-services .ddp-card');
+  if (!cards.length) return;
 
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: just show all cards
+    cards.forEach(function (card) { card.classList.add('ddp-in-view'); });
+    return;
+  }
+
+  var columns = window.matchMedia('(min-width: 1025px)').matches ? 4 : 2;
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var delay = (Array.prototype.indexOf.call(cards, el) % columns) * 80;
+        setTimeout(function () {
+          el.classList.add('ddp-in-view');
+        }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  cards.forEach(function (card) { observer.observe(card); });
+})();
   /* ---------- Contact form ---------- */
    
 const contactForm = document.getElementById("contactForm");
