@@ -986,56 +986,86 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
 /* ---------------------------------------------------------
    13. Footer
    --------------------------------------------------------- */
-.footer {
-  background: var(--black);
-  color: rgba(255,255,255,0.7);
-  padding-top: 64px;
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#111;
+    color:rgba(255,255,255,.75);
+    padding:70px 0 0;
 }
-.footer-inner {
-  display: grid;
-  grid-template-columns: 1.6fr repeat(4, 1fr);
-  gap: 32px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+.footer-inner{
+    display:grid;
+    grid-template-columns:2fr repeat(4,1fr);
+    gap:40px;
+    padding-bottom:50px;
+    border-bottom:1px solid rgba(255,255,255,.1);
 }
-@media (max-width: 980px) { .footer-inner { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .footer-inner { grid-template-columns: 1fr; } }
+
+@media(max-width:992px){
+    .footer-inner{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:576px){
+    .footer-inner{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+}
+
+/* Brand */
+
+.footer-brand{
+    max-width:340px;
+}
+
+.footer-logo{
+    display:inline-block;
+    margin-bottom:18px;
+}
 
 .footer-logo-img{
     width:160px;
     height:auto;
     display:block;
-    margin-bottom:20px;
-} margin-bottom: 16px; }
-.footer-brand p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-.footer-social{
-    display:flex;
-    align-items:center;
-    gap:16px;
 }
+
+.footer-brand p{
+    font-size:15px;
+    line-height:1.7;
+    color:rgba(255,255,255,.75);
+    margin-bottom:24px;
+}
+
+/* Social */
 
 .footer-social{
     display:flex;
     align-items:center;
     gap:16px;
-    margin-top:20px;
 }
 
 .social-icon{
     width:48px;
     height:48px;
-
-    display:inline-flex;
-    justify-content:center;
+    display:flex;
     align-items:center;
-
+    justify-content:center;
     border-radius:50%;
     background:#252525;
-
     color:#fff;
-    font-size:20px;
+    font-size:18px;
+    text-decoration:none;
+    transition:.3s ease;
+}
 
-    transition:.3s;
+.social-icon i{
+    font-size:18px;
+    line-height:1;
 }
 
 .social-icon:hover{
@@ -1043,43 +1073,48 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
     transform:translateY(-4px);
 }
 
-.social-icon i{
-    font-size:20px;
-    line-height:1;
+/* Columns */
+
+.footer-col h4{
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:18px;
 }
 
-.social-icon i{
-    font-size:20px;
-    line-height:1;
-}
-.footer-col h4 {
-  color: var(--white);
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-.footer-col a, .footer-col span {
-  display: block;
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 12px;
-  transition: color var(--speed) var(--ease);
-}
-.footer-col a:hover { color: var(--red); }
-
-.footer-bottom-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 24px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.footer-bottom-inner p {
-  font-size: 12.5px;
-  color: rgba(255,255,255,0.5);
+.footer-col a,
+.footer-col span{
+    display:block;
+    margin-bottom:12px;
+    color:rgba(255,255,255,.7);
+    font-size:14px;
+    text-decoration:none;
+    transition:.3s;
 }
 
+.footer-col a:hover{
+    color:#D91E2E;
+}
+
+/* Bottom */
+
+.footer-bottom{
+    padding:22px 0;
+}
+
+.footer-bottom-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.footer-bottom-inner p{
+    margin:0;
+    font-size:13px;
+    color:rgba(255,255,255,.55);
+}
 /* ---------------------------------------------------------
    14. Floating WhatsApp & Back to top
    --------------------------------------------------------- */
