@@ -610,24 +610,6 @@ h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); line-height:1
 .why-card h3{ font-size:1.08rem; font-weight:700; margin-bottom:10px; }
 .why-card p{ color: var(--text-soft); font-size:.94rem; font-weight:600; }
 
-/* ---------- Services ---------- */
-.services-legend{ display:flex; gap:22px; margin:30px 0 40px; flex-wrap:wrap; }
-.legend-chip{ display:flex; align-items:center; gap:8px; font-weight:700; font-size:.88rem; color: var(--text-soft); }
-.legend-chip i{ width:12px; height:12px; border-radius:4px; display:inline-block; }
-.legend-build i{ background: var(--primary); }
-.legend-comply i{ background: var(--accent); }
-
-.services-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:22px; }
-.service-card{
-  position:relative; background:#fff; border:1px solid var(--border); border-radius: var(--radius-md);
-  padding:30px 26px 26px; border-top:4px solid var(--primary); transition: transform .25s ease, box-shadow .25s ease;
-}
-.service-card.comply{ border-top-color: var(--accent); }
-.service-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.service-num{ font-family: var(--font-display); font-weight:800; font-size:.85rem; color: var(--border); display:block; margin-bottom:14px; }
-.service-card h3{ font-size:1.05rem; font-weight:700; margin-bottom:8px; }
-.service-card p{ color: var(--text-soft); font-size:.92rem; font-weight:600; }
-
 /* ---------- Portfolio ---------- */
 .portfolio-grid{ margin-top:50px; display:grid; grid-template-columns: repeat(4, 1fr); gap:22px; }
 .portfolio-card{
