@@ -134,3 +134,123 @@ if (contactForm) {
 }
 
 });
+/* ============================================================
+   DD PRIME SOLUTION — "Our Services" Section Behaviour
+   ------------------------------------------------------------
+   File: services.js
+   Scope: IIFE — no globals leaked, no external dependencies.
+   Responsibilities:
+     1. Fade-up / slide-up scroll reveal (IntersectionObserver)
+     2. Ripple click effect on cards + CTA button
+   ============================================================ */
+
+(function () {
+  "use strict";
+
+  var section = document.getElementById("services");
+  if (!section) return;
+
+  /* ----------------------------------------------------------
+     1. Scroll reveal
+     ---------------------------------------------------------- */
+  var revealEls = section.querySelectorAll(".svc-reveal");
+
+  if (revealEls.length) {
+    if ("IntersectionObserver" in window) {
+      var revealObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry, i) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var delay = Math.min(i * 60, 240);
+              window.setTimeout(function () {
+                el.classList.add("svc-in-view");
+              }, delay);
+              revealObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      );
+
+      revealEls.forEach(function (el) {
+        revealObserver.observe(el);
+      });
+    } else {
+      // No IntersectionObserver support: show content immediately
+      revealEls.forEach(function (el) {
+        el.classList.add("svc-in-view");
+      });
+    }
+  }
+
+  /* ----------------------------------------------------------
+     2. Ripple click effect (delegated, single listener)
+     ---------------------------------------------------------- */
+  function spawnRipple(targetEl, rippleEl, evt) {
+    var rect = targetEl.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height) * 1.6;
+    var x = (evt.clientX || rect.left + rect.width / 2) - rect.left - size / 2;
+    var y = (evt.clientY || rect.top + rect.height / 2) - rect.top - size / 2;
+
+    rippleEl.style.width = size + "px";
+    rippleEl.style.height = size + "px";
+    rippleEl.style.left = x + "px";
+    rippleEl.style.top = y + "px";
+
+    // Restart animation
+    rippleEl.classList.remove("svc-ripple-active");
+    // Force reflow so the animation can be re-triggered
+    void rippleEl.offsetWidth;
+    rippleEl.classList.add("svc-ripple-active");
+  }
+
+  section.addEventListener("click", function (evt) {
+    var card = evt.target.closest(".svc-card");
+    if (card && section.contains(card)) {
+      var ripple = document.createElement("span");
+      ripple.className = "svc-card__ripple";
+      card.appendChild(ripple);
+
+      spawnRipple(card, ripple, evt);
+
+      ripple.addEventListener(
+        "animationend",
+        function () {
+          ripple.remove();
+        },
+        { once: true }
+      );
+      return;
+    }
+
+    var cta = evt.target.closest(".svc__cta");
+    if (cta && section.contains(cta)) {
+      var ctaRipple = cta.querySelector(".svc__cta-ripple");
+      if (ctaRipple) {
+        spawnRipple(cta, ctaRipple, evt);
+      }
+    }
+  });
+
+  /* Keyboard activation (Enter/Space) also triggers a centered ripple
+     for cards/CTA reached via Tab, preserving the micro-interaction
+     for keyboard-only users. */
+  section.addEventListener("keydown", function (evt) {
+    if (evt.key !== "Enter" && evt.key !== " ") return;
+    var el = evt.target.closest(".svc-card, .svc__cta");
+    if (!el) return;
+
+    var fakeEvt = { clientX: null, clientY: null };
+    if (el.classList.contains("svc-card")) {
+      var ripple = document.createElement("span");
+      ripple.className = "svc-card__ripple";
+      el.appendChild(ripple);
+      spawnRipple(el, ripple, fakeEvt);
+      ripple.addEventListener("animationend", function () { ripple.remove(); }, { once: true });
+    } else {
+      var ctaRipple = el.querySelector(".svc__cta-ripple");
+      if (ctaRipple) spawnRipple(el, ctaRipple, fakeEvt);
+    }
+  });
+})();
