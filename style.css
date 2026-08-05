@@ -2398,3 +2398,40 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
   }
   .reveal, .svc-reveal { opacity: 1; transform: none; }
 }
+/* ================= BRAND HEADER ================= */
+
+.brand-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.brand-header__logo{
+    width:90px;       /* 70px, 80px, 100px bhi kar sakte ho */
+    height:auto;
+    display:block;
+    margin:0 auto 12px;
+}
+
+.brand-header__name{
+    margin:0;
+    font-size:38px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.brand-header__name--dd{
+    color:#111111;
+}
+
+.brand-header__name--prime{
+    color:#0B2A5B;
+}
+
+.brand-header__tagline{
+    margin-top:6px;
+    font-size:16px;
+    color:#555;
+}
