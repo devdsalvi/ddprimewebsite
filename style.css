@@ -69,7 +69,7 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
 .skip-link {
@@ -297,21 +297,20 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
    --------------------------------------------------------- */
 .hero {
   position: relative;
-  padding: 20px 0 80px;
+  padding: 10px 0 60px;
   background:
     radial-gradient(circle at 15% 20%, var(--blue-soft), transparent 55%),
     radial-gradient(circle at 85% 80%, var(--red-soft), transparent 55%),
     var(--gray);
   overflow: hidden;
 }
-
 .hero-inner {
   display: flex;
   justify-content: center;
 }
 
 .hero-content {
-  max-width: 760px;
+  max-width: 680px;
   text-align: center;
 }
 
@@ -350,7 +349,7 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
 .hero-desc {
   font-size: 17px;
   color: var(--muted);
-  max-width: 620px;
+  max-width: 560px;
   margin: 0 auto 36px;
 }
 
@@ -364,9 +363,8 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
 @media (max-width:640px){
 
 .hero{
-    padding:15px 0 50px;
+    padding:8px 0 35px;
 }
-
 .hero-content{
     padding-top:0;
 }
@@ -385,36 +383,31 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
 }
 
 .brand-header__logo{
-    width:70px;
+    width:65px;
     height:auto;
     margin-bottom:14px;
-    filter:drop-shadow(0 10px 25px rgba(11,42,91,.18));
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,.08));
 }
 .brand-header__name{
     margin:0;
     font-family:var(--font-heading);
-    font-size:44px;
+    font-size:clamp(22px,3vw,38px);
     font-weight:900;
-    letter-spacing:2px;
+    letter-spacing:1px;
     text-transform:uppercase;
     line-height:1.1;
 }
-
 .brand-header__name--dd{
     color:#0B2A5B;
 }
-
 .brand-header__name--prime{
     color:#111111;
     font-weight:700;
 }
-}
-
 .brand-header__tagline{
     display:none;
 }
-
-@media(max-width:768px){
+@media(max-width:768px){}
 
 .brand-header__logo{
     width:58px;
