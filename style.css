@@ -361,8 +361,17 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
   flex-wrap: wrap;
 }
 
-@media (max-width: 640px) {
-  .hero { padding: 96px 0 72px; }
+@media (max-width:640px){
+
+.hero{
+    padding:15px 0 50px;
+}
+
+.hero-content{
+    padding-top:0;
+}
+
+}
   .hero-cta .btn { width: 100%; }
 }
 /* ===== PREMIUM BRAND HEADER ===== */
