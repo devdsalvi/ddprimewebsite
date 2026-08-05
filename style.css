@@ -298,7 +298,7 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
    --------------------------------------------------------- */
 .hero {
   position: relative;
-  padding: 120px 0 100px;
+  padding: 50px 0 100px;
   background:
     radial-gradient(circle at 15% 20%, var(--blue-soft), transparent 55%),
     radial-gradient(circle at 85% 80%, var(--red-soft), transparent 55%),
