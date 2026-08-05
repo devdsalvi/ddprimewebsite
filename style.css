@@ -410,12 +410,10 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
 .brand-header__logo{
     width:58px;
 }
-
 .brand-header__name{
-    font-size:26px;
-    letter-spacing:1px;
-}
-
+    font-size:16px;
+    letter-spacing:0;
+    white-space:nowrap;
 }
 /* ---------------------------------------------------------
    4. Section shared patterns
