@@ -365,7 +365,57 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
   .hero { padding: 96px 0 72px; }
   .hero-cta .btn { width: 100%; }
 }
+/* ===== PREMIUM BRAND HEADER ===== */
 
+.brand-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:28px;
+}
+
+.brand-header__logo{
+    width:70px;
+    height:auto;
+    margin-bottom:14px;
+    filter:drop-shadow(0 10px 25px rgba(11,42,91,.18));
+}
+
+.brand-header__name{
+    margin:0;
+    font-family:var(--font-heading);
+    font-size:40px;
+    font-weight:900;
+    line-height:1.1;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.brand-header__name--dd{
+    color:#0B2A5B;
+}
+
+.brand-header__name--prime{
+    color:#111111;
+}
+
+.brand-header__tagline{
+    display:none;
+}
+
+@media(max-width:768px){
+
+.brand-header__logo{
+    width:58px;
+}
+
+.brand-header__name{
+    font-size:26px;
+    letter-spacing:1px;
+}
+
+}
 /* ---------------------------------------------------------
    4. Section shared patterns
    --------------------------------------------------------- */
