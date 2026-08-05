@@ -2409,7 +2409,7 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
 }
 
 .brand-header__logo{
-    width:90px;       /* 70px, 80px, 100px bhi kar sakte ho */
+    width:60px;       /* 70px, 80px, 100px bhi kar sakte ho */
     height:auto;
     display:block;
     margin:0 auto 12px;
@@ -2417,8 +2417,8 @@ input, textarea, select { font-family: inherit; font-size: 15px; }
 
 .brand-header__name{
     margin:0;
-    font-size:38px;
-    font-weight:800;
+    font-size:30px;
+    font-weight:600;
     letter-spacing:1px;
 }
 
